@@ -1,0 +1,127 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* Custom theme variables */
+:root {
+    --sidebar-bg: #1a1a1a;      /* Dark black */
+    --sidebar-text: #ffffff;
+    --primary-green: #2e7d32;   /* Dark green */
+    --primary-green-light: #4caf50;
+    --sidebar-hover: #2e7d32;
+    --bg-light: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-dark: #212529;
+}
+
+[data-bs-theme="dark"] {
+    --sidebar-bg: #0d0d0d;
+    --sidebar-text: #e0e0e0;
+    --bg-light: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-dark: #f0f0f0;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 20px 0;
+    transition: transform 0.3s ease;
+    z-index: 1050;
+    overflow-y: auto;
+}
+.sidebar .nav-link {
+    color: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    margin: 4px 12px;
+    padding: 10px 16px;
+    transition: all 0.3s;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary-green);
+    color: #ffffff;
+}
+.sidebar .nav-link i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+.sidebar .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-green-light);
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+.sidebar .brand i {
+    color: var(--primary-green-light);
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+/* Mobile toggle button */
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.8rem;
+    padding: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .sidebar-toggle {
+        display: block;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1040;
+    }
+    .overlay.show {
+        display: block;
+    }
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: background-color 0.3s;
+}
+.card-title {
+    color: var(--primary-green);
+}
